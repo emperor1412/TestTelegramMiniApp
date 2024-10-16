@@ -1,0 +1,89 @@
+.invite-friends {
+    background-color: #1e1e1e;
+    color: white;
+    font-family: Arial, sans-serif;
+    padding: 20px;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .tasks {
+    font-weight: bold;
+  }
+  
+  .invite-frens {
+    background-color: #333;
+    padding: 5px 10px;
+    border-radius: 5px;
+  }
+  
+  .user-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .username {
+    font-weight: bold;
+  }
+  
+  .stats span {
+    margin-right: 10px;
+  }
+  
+  .fsl-id {
+    background-color: #8e44ad;
+    padding: 5px 10px;
+    border-radius: 5px;
+  }
+  
+  .invite-message {
+    background-color: #8e44ad;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
+  
+  .friends-list {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .friend-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .friend-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  
+  .friend-info {
+    flex-grow: 1;
+  }
+  
+  .friend-name {
+    font-weight: bold;
+  }
+  
+  .friend-phone {
+    font-size: 0.8em;
+    color: #888;
+  }
+  
+  .invite-checkbox {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #8e44ad;
+    border-radius: 3px;
+  }

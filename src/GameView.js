@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 
-function GameView() {
+function GameView({ onBack }) {
   const canvasRef = useRef(null);
 
   useEffect(() => {
@@ -11,15 +11,26 @@ function GameView() {
       
       script.onload = () => {
         const buildUrl = process.env.PUBLIC_URL + "/WebGL/Build";
+
         const config = {
-          dataUrl: buildUrl + "/WebGL.data",
-          frameworkUrl: buildUrl + "/WebGL.framework.js",
-          codeUrl: buildUrl + "/WebGL.wasm",
+          dataUrl: buildUrl + "/WebGL.data.unityweb",
+          frameworkUrl: buildUrl + "/WebGL.framework.js.unityweb",
+          codeUrl: buildUrl + "/WebGL.wasm.unityweb",
           streamingAssetsUrl: "StreamingAssets",
           companyName: "DefaultCompany",
           productName: "TestUnity6WebGL",
-          productVersion: "1.0.2",
+          productVersion: "1.0.2"
         };
+          
+        // Try to load Brotli compressed files if supported
+        //   let supportsBrotli = 'DecompressionStream' in window;
+        //   supportsBrotli = false; // Disable Brotli for now
+        // console.log('supportsBrotli', supportsBrotli);
+        //   if (supportsBrotli) {
+        //     config.dataUrl += '.br';
+        //     config.frameworkUrl += '.br';
+        //     config.codeUrl += '.br';
+        //   }
 
         const canvas = canvasRef.current;
         const loadingBar = document.querySelector("#unity-loading-bar");
@@ -60,15 +71,35 @@ function GameView() {
   }, []);
 
   return (
-    <div id="unity-container" style={{ width: '100%', height: '100%', position: 'fixed' }}>
-      <canvas ref={canvasRef} id="unity-canvas" style={{ width: '100%', height: '100%' }}></canvas>
-      <div id="unity-loading-bar">
-        <div id="unity-logo"></div>
-        <div id="unity-progress-bar-empty">
-          <div id="unity-progress-bar-full"></div>
+    <div style={{ position: 'relative', width: '100vw', height: '100vh' }}>
+      <div id="unity-container" style={{ width: '100%', height: '100%', position: 'fixed' }}>
+        <canvas ref={canvasRef} id="unity-canvas" style={{ width: '100%', height: '100%' }}></canvas>
+        <div id="unity-loading-bar">
+          <div id="unity-logo"></div>
+          <div id="unity-progress-bar-empty">
+            <div id="unity-progress-bar-full"></div>
+          </div>
         </div>
+        <div id="unity-warning"></div>
       </div>
-      <div id="unity-warning"></div>
+      <button
+        onClick={onBack}
+        style={{
+          position: 'absolute',
+          top: '10px',
+          left: '10px',
+          padding: '10px',
+          fontSize: '16px',
+          backgroundColor: '#007bff',
+          color: 'white',
+          border: 'none',
+          borderRadius: '5px',
+          cursor: 'pointer',
+          zIndex: 1000,
+        }}
+      >
+        Back to Menu
+      </button>
     </div>
   );
 }

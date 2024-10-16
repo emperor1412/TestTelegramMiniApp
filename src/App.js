@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import GameView from './GameView';
+import ThreeJsView from './ThreeJsView';
 
 const tg = window.Telegram.WebApp;
 
 function App() {
   const [user, setUser] = useState(null);
   const [showGame, setShowGame] = useState(false);
+  const [showThreeJs, setShowThreeJs] = useState(false);
 
   useEffect(() => {
     tg.ready();
@@ -26,8 +28,21 @@ function App() {
     setShowGame(true);
   };
 
+  const launchThreeJs = () => {
+    setShowThreeJs(true);
+  };
+
+  const handleBack = () => {
+    setShowGame(false);
+    setShowThreeJs(false);
+  };
+
+  if (showThreeJs) {
+    return <ThreeJsView onBack={handleBack} />;
+  }
+
   if (showGame) {
-    return <GameView />;
+    return <GameView onBack={handleBack} />;
   }
 
   return (
@@ -36,6 +51,7 @@ function App() {
       <button onClick={showAlert}>Show Alert</button>
       <button onClick={getUserInfo}>Get User Info</button>
       <button onClick={launchGame}>Play Game</button>
+      <button onClick={launchThreeJs}>Test Three.js</button>
       {user && (
         <div>
           <h2>User Info:</h2>
