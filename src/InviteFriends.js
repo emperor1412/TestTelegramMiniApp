@@ -1,13 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './InviteFriends.css';
 
 const InviteFriends = ({ user }) => {
-  const friends = [
-    { name: 'Mom', phone: '+44 888 654 2342', image: 'https://example.com/mom.jpg' },
-    { name: 'Jerry', phone: '+44 888 654 2342', image: 'https://example.com/jerry.jpg' },
-    { name: 'Shiti', phone: '+44 888 654 2342', image: 'https://example.com/shiti.jpg' },
-    { name: 'Yawn', phone: '+44 888 654 2342', image: 'https://example.com/yawn.jpg' },
-  ];
+  const [friends, setFriends] = useState([
+    { name: 'Mom', phone: '+44 888 654 2342', image: 'https://example.com/mom.jpg', selected: false },
+    { name: 'Jerry', phone: '+44 888 654 2342', image: 'https://example.com/jerry.jpg', selected: false },
+    { name: 'Shiti', phone: '+44 888 654 2342', image: 'https://example.com/shiti.jpg', selected: false },
+    { name: 'Yawn', phone: '+44 888 654 2342', image: 'https://example.com/yawn.jpg', selected: false },
+  ]);
+
+  const toggleFriendSelection = (index) => {
+    const updatedFriends = [...friends];
+    updatedFriends[index].selected = !updatedFriends[index].selected;
+    setFriends(updatedFriends);
+  };
 
   return (
     <div className="invite-friends">
@@ -37,7 +43,10 @@ const InviteFriends = ({ user }) => {
               <div className="friend-name">{friend.name}</div>
               <div className="friend-phone">{friend.phone}</div>
             </div>
-            <div className="invite-checkbox"></div>
+            <div 
+              className={`invite-checkbox ${friend.selected ? 'selected' : ''}`}
+              onClick={() => toggleFriendSelection(index)}
+            ></div>
           </div>
         ))}
       </div>

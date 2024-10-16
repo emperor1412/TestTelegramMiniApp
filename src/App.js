@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 import GameView from './GameView';
 import ThreeJsView from './ThreeJsView';
+import InviteFriends from './InviteFriends';
 
 const tg = window.Telegram.WebApp;
 
@@ -9,6 +10,7 @@ function App() {
   const [user, setUser] = useState(null);
   const [showGame, setShowGame] = useState(false);
   const [showThreeJs, setShowThreeJs] = useState(false);
+  const [showInviteFriends, setShowInviteFriends] = useState(false);
 
   useEffect(() => {
     tg.ready();
@@ -32,9 +34,14 @@ function App() {
     setShowThreeJs(true);
   };
 
+  const launchInviteFriends = () => {
+    setShowInviteFriends(true);
+  };
+
   const handleBack = () => {
     setShowGame(false);
     setShowThreeJs(false);
+    setShowInviteFriends(false);
   };
 
   if (showThreeJs) {
@@ -45,6 +52,10 @@ function App() {
     return <GameView onBack={handleBack} />;
   }
 
+  if (showInviteFriends) {
+    return <InviteFriends user={user} onBack={handleBack} />;
+  }
+
   return (
     <div className="App">
       <h1>Test Telegram Mini App (React)</h1>
@@ -52,6 +63,7 @@ function App() {
       <button onClick={getUserInfo}>Get User Info</button>
       <button onClick={launchGame}>Play Game</button>
       <button onClick={launchThreeJs}>Test Three.js</button>
+      <button onClick={launchInviteFriends}>Invite Friends</button>
       {user && (
         <div>
           <h2>User Info:</h2>
