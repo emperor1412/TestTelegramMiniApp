@@ -7,26 +7,31 @@ import FSLIDView from './FSLIDView';
 import HomeView from './HomeView';
 import TasksView from './TasksView';
 import MarketView from './MarketView';
+import WebApp from '@twa-dev/sdk'
+// import { init, miniApp } from '@telegram-apps/sdk';
 
-const tg = window.Telegram.WebApp;
+// const tg = window.Telegram.WebApp;
 
 function App() {
   const [user, setUser] = useState(null);
   const [activeTab, setActiveTab] = useState('home');
+  // const swipeBehavior = useSwipeBehavior();
 
   useEffect(() => {
-    tg.ready();
-    tg.expand();
-    
-    // Disable vertical swipe to close
-    tg.setHeaderColor('secondary_bg_color');
-    tg.MainButton.setParams({
-      is_visible: false
-    });
+    WebApp.ready();
+    WebApp.expand();
+
+    // init();
+    // miniApp.mount();
+
+    // tg.ready();
+    // tg.expand();   
     
     // Get user info when the app loads
-    const user = tg.initDataUnsafe.user;
-    setUser(user);
+    // const user = tg.initDataUnsafe.user;
+    const temp = WebApp.initDataUnsafe.user;
+
+    setUser(temp);
   }, []);
 
   const renderActiveView = () => {
