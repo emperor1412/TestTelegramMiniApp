@@ -44,7 +44,7 @@ function GameView({ onBack }) {
 
           canvas.style.width = "100%";
           canvas.style.height = "100%";
-          canvas.style.position = "fixed";
+          // canvas.style.position = "fixed";
 
           document.body.style.textAlign = "left";
         }
@@ -71,8 +71,8 @@ function GameView({ onBack }) {
   }, []);
 
   return (
-    <div style={{ position: 'relative', width: '100vw', height: '100vh' }}>
-      <div id="unity-container" style={{ width: '100%', height: '100%', position: 'fixed' }}>
+    <div style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', overflow: 'hidden' }}>
+      <div id="unity-container" style={{ width: '100%', height: '100%' }}>
         <canvas ref={canvasRef} id="unity-canvas" style={{ width: '100%', height: '100%' }}></canvas>
         <div id="unity-loading-bar">
           <div id="unity-logo"></div>
@@ -90,7 +90,7 @@ function GameView({ onBack }) {
           left: '10px',
           padding: '10px',
           fontSize: '16px',
-          backgroundColor: '#007bff',
+          backgroundColor: 'rgba(0, 123, 255, 0.7)',
           color: 'white',
           border: 'none',
           borderRadius: '5px',

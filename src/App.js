@@ -18,6 +18,12 @@ function App() {
     tg.ready();
     tg.expand();
     
+    // Disable vertical swipe to close
+    tg.setHeaderColor('secondary_bg_color');
+    tg.MainButton.setParams({
+      is_visible: false
+    });
+    
     // Get user info when the app loads
     const user = tg.initDataUnsafe.user;
     setUser(user);
@@ -26,7 +32,11 @@ function App() {
   const renderActiveView = () => {
     switch (activeTab) {
       case 'home':
-        return <HomeView user={user} />;
+        return <HomeView 
+          user={user} 
+          onOpenGameView={() => setActiveTab('game')} 
+          onOpenThreeJsView={() => setActiveTab('threejs')} 
+        />;
       case 'tasks':
         return <TasksView user={user} />;
       case 'frens':
@@ -35,8 +45,24 @@ function App() {
         return <MarketView user={user} />;
       case 'fslid':
         return <FSLIDView user={user} />;
+      case 'game':
+        return (
+          <div style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', zIndex: 1000 }}>
+            <GameView onBack={() => setActiveTab('home')} />
+          </div>
+        );
+      case 'threejs':
+        return (
+          <div style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', zIndex: 1000 }}>
+            <ThreeJsView onBack={() => setActiveTab('home')} />
+          </div>
+        );
       default:
-        return <HomeView user={user} />;
+        return <HomeView 
+          user={user} 
+          onOpenGameView={() => setActiveTab('game')} 
+          onOpenThreeJsView={() => setActiveTab('threejs')} 
+        />;
     }
   };
 
