@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/TestTelegramMiniApp/static/css/main.3cf5febd.css",
-    "main.js": "/TestTelegramMiniApp/static/js/main.c1a6f201.js",
+    "main.js": "/TestTelegramMiniApp/static/js/main.cbf8f6e2.js",
     "static/js/453.c7123701.chunk.js": "/TestTelegramMiniApp/static/js/453.c7123701.chunk.js",
     "index.html": "/TestTelegramMiniApp/index.html",
     "main.3cf5febd.css.map": "/TestTelegramMiniApp/static/css/main.3cf5febd.css.map",
-    "main.c1a6f201.js.map": "/TestTelegramMiniApp/static/js/main.c1a6f201.js.map",
+    "main.cbf8f6e2.js.map": "/TestTelegramMiniApp/static/js/main.cbf8f6e2.js.map",
     "453.c7123701.chunk.js.map": "/TestTelegramMiniApp/static/js/453.c7123701.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.3cf5febd.css",
-    "static/js/main.c1a6f201.js"
+    "static/js/main.cbf8f6e2.js"
   ]
 }
