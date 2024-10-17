@@ -3,6 +3,7 @@ import './App.css';
 import GameView from './GameView';
 import ThreeJsView from './ThreeJsView';
 import InviteFriends from './InviteFriends';
+import FSLIDView from './FSLIDView';
 
 const tg = window.Telegram.WebApp;
 
@@ -11,6 +12,7 @@ function App() {
   const [showGame, setShowGame] = useState(false);
   const [showThreeJs, setShowThreeJs] = useState(false);
   const [showInviteFriends, setShowInviteFriends] = useState(false);
+  const [showFSLID, setShowFSLID] = useState(false);
 
   useEffect(() => {
     tg.ready();
@@ -42,6 +44,12 @@ function App() {
     setShowGame(false);
     setShowThreeJs(false);
     setShowInviteFriends(false);
+    setShowFSLID(false);
+  };
+
+  const handleShowFSLID = () =>{
+    setShowInviteFriends(false);
+    setShowFSLID(true);
   };
 
   if (showThreeJs) {
@@ -53,7 +61,11 @@ function App() {
   }
 
   if (showInviteFriends) {
-    return <InviteFriends user={user} onBack={handleBack} />;
+    return <InviteFriends user={user} onBack={handleBack} onShowFSLID={handleShowFSLID} />;
+  }
+
+  if (showFSLID) {
+    return <FSLIDView user={user} onBack={() => { setShowFSLID(false); setShowInviteFriends(true); }} />;
   }
 
   return (

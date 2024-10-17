@@ -10,6 +10,7 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
+    padding: 10px;
   }
   
   .tasks {
@@ -18,8 +19,9 @@
   
   .invite-frens {
     background-color: #333;
-    padding: 5px 10px;
+    padding: 10px;
     border-radius: 5px;
+    font-size: 16px;
   }
   
   .user-info {
@@ -58,7 +60,8 @@
   .friend-item {
     display: flex;
     align-items: center;
-    margin-bottom: 10px;
+    padding: 10px 15px;
+    box-sizing: border-box;
   }
   
   .friend-image {
@@ -70,18 +73,27 @@
   
   .friend-info {
     flex-grow: 1;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
   
   .friend-name {
     font-weight: bold;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   
   .friend-phone {
     font-size: 0.8em;
     color: #888;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   
   .invite-checkbox {
+    margin-left: auto;
+    margin-right: 10px;
     width: 20px;
     height: 20px;
     border: 2px solid #8e44ad;
@@ -90,6 +102,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-shrink: 0;
+    background-color: transparent;
   }
   
   .invite-checkbox.selected::after {
@@ -97,3 +111,46 @@
     color: #8e44ad;
     font-size: 16px;
   }
+
+.back-button {
+  padding: 10px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.back-button:hover {
+  background-color: #0056b3;
+}
+
+.invite-friends-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background-color: #1e1e1e;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+.invite-friends-header, .user-info, .invite-message {
+  flex-shrink: 0;
+  padding: 10px;
+}
+
+.friends-list-container {
+  flex-grow: 1;
+  overflow: hidden;
+}
+
+.invite-friends-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  flex-shrink: 0;
+}
