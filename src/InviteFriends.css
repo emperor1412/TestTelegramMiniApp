@@ -129,6 +129,8 @@
 .invite-friends-container {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   height: 100vh;
   width: 100vw;
   overflow: hidden;
@@ -138,19 +140,55 @@
 }
 
 .invite-friends-header, .user-info, .invite-message {
-  flex-shrink: 0;
+  width: 100%;
+  max-width: 600px;
   padding: 10px;
+  box-sizing: border-box;
 }
 
 .friends-list-container {
+  width: 100%;
+  max-width: 600px;
   flex-grow: 1;
   overflow: hidden;
 }
 
 .invite-friends-header {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   padding: 10px;
   flex-shrink: 0;
+}
+
+.test-subview {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  background-color: #1e1e1e;
+  color: white;
+}
+
+.subview-header {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+.subview-header h2 {
+  margin-left: 20px;
+}
+
+.subview-content {
+  flex-grow: 1;
+  padding: 20px;
+}
+
+.test-subview .back-button {
+  margin-bottom: 20px;
+}
+
+.test-subview h2 {
+  margin-bottom: 10px;
 }
