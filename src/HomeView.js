@@ -1,29 +1,102 @@
 import './HomeView.css';
-import React, { useState } from 'react';
-import { swipeBehavior, miniApp } from '@telegram-apps/sdk';
-import WebApp from '@twa-dev/sdk'
+import React, { useState, useEffect } from 'react';
+import { swipeBehavior, miniApp, mainButton, themeParams } from '@telegram-apps/sdk';
+// import WebApp from '@twa-dev/sdk'
+
+// Declare these variables outside of the component, but within the module
+let isPurpleHeader = false;
+let isMainButtonEnabled = false;
+let count = 0;
+let isVerticalEnabled = true;
+let swipeSupported = false;
+let swipeMounted = false;
 
 const HomeView = ({ user, onOpenGameView, onOpenThreeJsView }) => {
-    const [isPurpleHeader, setIsPurpleHeader] = useState(false);
+    // Use state hooks, initializing with the module-level variables
+    const [purpleHeader, setPurpleHeader] = useState(isPurpleHeader);
+    const [mainButtonEnabled, setMainButtonEnabled] = useState(isMainButtonEnabled);
+    const [currentCount, setCurrentCount] = useState(count);
+    const [verticalEnabled, setVerticalEnabled] = useState(isVerticalEnabled);
+    const [swipeIsSupported, setSwipeIsSupported] = useState(swipeSupported);
+    const [swipeIsMounted, setSwipeIsMounted] = useState(swipeMounted);
 
-    const swipeSupported = swipeBehavior.isSupported();
-    let swipeMounted = swipeBehavior.isMounted();
-    let isVerticalEnabled = swipeBehavior.isVerticalEnabled();
-    console.log(`swipeSupported: ${swipeSupported}\n swipeMounted: ${swipeMounted}`);
+    // Update module-level variables when state changes
+    useEffect(() => {
+        isPurpleHeader = purpleHeader;
+        isMainButtonEnabled = mainButtonEnabled;
+        count = currentCount;
+        isVerticalEnabled = verticalEnabled;
+        swipeSupported = swipeIsSupported;
+        swipeMounted = swipeIsMounted;
+    }, [purpleHeader, mainButtonEnabled, currentCount, verticalEnabled, swipeIsSupported, swipeIsMounted]);
+
+    const onClick_MainButton = () => {
+        console.log('Main button clicked');
+        setCurrentCount(prevCount => prevCount + 1);
+    };
+
+    useEffect(() => {
+        mainButton.onClick(onClick_MainButton);
+        
+        // Initialize state if needed
+        setSwipeIsSupported(swipeBehavior.isSupported());
+        setSwipeIsMounted(swipeBehavior.isMounted());
+        setVerticalEnabled(swipeBehavior.isVerticalEnabled());
+
+        return () => {
+            mainButton.offClick(onClick_MainButton);
+        };
+    }, []);
 
     const disableVerticalSwipe = () => {
-        swipeBehavior.mount();
+        // swipeBehavior.mount();
         swipeMounted = swipeBehavior.isMounted();
+        swipeBehavior.mount();
 
-        isVerticalEnabled = swipeBehavior.isVerticalEnabled();
+        setVerticalEnabled(swipeBehavior.isVerticalEnabled());
         console.log(`isVerticalEnabled: ${isVerticalEnabled}`);
 
         swipeBehavior.disableVertical();
         console.log(`Disable vertical swipe`);
 
-        isVerticalEnabled = swipeBehavior.isVerticalEnabled();
+        setVerticalEnabled(swipeBehavior.isVerticalEnabled());
         console.log(`isVerticalEnabled: ${isVerticalEnabled}`);
     };
+
+    
+
+    const toggleMainButton = () => {
+        enableMainButton(!isMainButtonEnabled);
+        setMainButtonEnabled(!isMainButtonEnabled);
+    };
+
+    const enableMainButton = (enabled) => {
+        if (enabled) {
+            themeParams.mount();
+            mainButton.mount();
+            mainButton.setParams({
+                backgroundColor: '#000000',
+                hasShineEffect: true,
+                isEnabled: true,
+                isLoaderVisible: false,
+                isVisible: true,
+                text: 'Click Me!',
+                textColor: '#668899'
+            });
+        } else {
+
+            if (mainButton.isMounted) {
+                mainButton.setParams({
+                    isLoaderVisible: false,
+                    isEnabled: false,
+                    isVisible: false
+                });
+            }
+            mainButton.unmount();
+            themeParams.unmount();
+        }
+    };
+
 
     const toggleHeaderColor = () => {
         // if (miniApp.setHeaderColor.isSupported()) {
@@ -32,11 +105,12 @@ const HomeView = ({ user, onOpenGameView, onOpenThreeJsView }) => {
             } else {
                 miniApp.setHeaderColor('#8e44ad'); // Set to purple
             }
-            setIsPurpleHeader(!isPurpleHeader);
+            setPurpleHeader(!isPurpleHeader);
         // } else {
         //     console.log('Setting header color is not supported');
         // }
     };
+
 
     return (
         <div className="home-view">
@@ -63,17 +137,31 @@ const HomeView = ({ user, onOpenGameView, onOpenThreeJsView }) => {
                 </div>
 
                 <div className="swipe-info">
-                    <p>Swipe Supported: {swipeSupported ? 'Yes' : 'No'}</p>
-                    <p>Swipe Mounted: {swipeMounted ? 'Yes' : 'No'}</p>
-                    <p>Vertical Swipe Enabled: {isVerticalEnabled ? 'Yes' : 'No'}</p>
+                    <p>Swipe Supported: {swipeIsSupported ? 'Yes' : 'No'}</p>
+                    <p>Swipe Mounted: {swipeIsMounted ? 'Yes' : 'No'}</p>
+                    <p>Vertical Swipe Enabled: {verticalEnabled ? 'Yes' : 'No'}</p>
                 </div>
 
                 <button onClick={disableVerticalSwipe} className="disable-swipe-button">
                     Disable Vertical Swipe
                 </button>
 
+                <div className="main-button-info">
+                    <h3>Main Button Information</h3>
+                    <p>Count: {currentCount}</p>
+                    <p>Main Button Enabled: {mainButtonEnabled ? 'Yes' : 'No'}</p>
+                </div>
+
+                <button onClick={toggleMainButton} className="toggle-main-button">
+                    {mainButtonEnabled ? 'Disable Main Button' : 'Enable Main Button'}
+                </button>
+
+                <button onClick={onClick_MainButton} className="main-button">
+                    Test Main Button
+                </button>
+
                 <button onClick={toggleHeaderColor} className="toggle-header-color-button">
-                    {isPurpleHeader ? 'Set Default Header Color' : 'Set Purple Header Color'}
+                    {purpleHeader ? 'Set Default Header Color' : 'Set Purple Header Color'}
                 </button>
 
                 <button onClick={onOpenGameView} className="open-game-button">

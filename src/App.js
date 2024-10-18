@@ -7,29 +7,49 @@ import FSLIDView from './FSLIDView';
 import HomeView from './HomeView';
 import TasksView from './TasksView';
 import MarketView from './MarketView';
-import WebApp from '@twa-dev/sdk'
-// import { init, miniApp } from '@telegram-apps/sdk';
+// import WebApp from '@twa-dev/sdk'
+import { init, initData, miniApp, viewport, swipeBehavior } from '@telegram-apps/sdk';
 
 // const tg = window.Telegram.WebApp;
 
 function App() {
+
   const [user, setUser] = useState(null);
   const [activeTab, setActiveTab] = useState('home');
   // const swipeBehavior = useSwipeBehavior();
 
   useEffect(() => {
-    WebApp.ready();
-    WebApp.expand();
+    console.log('App useEffect called');
+    // WebApp.ready();
+    // WebApp.expand();
+    miniApp.ready();
+    
+    init();
+    miniApp.mount();
+    viewport.expand();
 
-    // init();
-    // miniApp.mount();
+    swipeBehavior.mount();
+    swipeBehavior.disableVertical();
+
+    // document.addEventListener('touchstart', function(event) {
+    //     if (event.touches.length > 1) {
+    //         event.preventDefault();
+    //     }
+    // }, { passive: false });
+    
+    // document.addEventListener('touchmove', function(event) {
+    //     if (event.scale !== 1) {
+    //         event.preventDefault();
+    //     }
+    // }, { passive: false });
 
     // tg.ready();
     // tg.expand();   
     
     // Get user info when the app loads
     // const user = tg.initDataUnsafe.user;
-    const temp = WebApp.initDataUnsafe.user;
+    // const temp = WebApp.initDataUnsafe.user;
+    const temp = initData.user;
 
     setUser(temp);
   }, []);
