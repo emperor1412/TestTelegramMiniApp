@@ -7,8 +7,12 @@ import FSLIDView from './FSLIDView';
 import HomeView from './HomeView';
 import TasksView from './TasksView';
 import MarketView from './MarketView';
+import eruda from 'eruda'
+
 // import WebApp from '@twa-dev/sdk'
 import { init, initData, miniApp, viewport, swipeBehavior } from '@telegram-apps/sdk';
+
+eruda.init()
 
 // const tg = window.Telegram.WebApp;
 
@@ -28,8 +32,8 @@ function App() {
     miniApp.mount();
     viewport.expand();
 
-    swipeBehavior.mount();
-    swipeBehavior.disableVertical();
+    // swipeBehavior.mount();
+    // swipeBehavior.disableVertical();
 
     // document.addEventListener('touchstart', function(event) {
     //     if (event.touches.length > 1) {

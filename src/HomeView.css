@@ -14,14 +14,11 @@
 }
 
 .home-view {
-  height: 100%;
+  flex: 1;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   padding: 20px;
   box-sizing: border-box;
-}
-
-.content-wrapper {
-  min-height: 100%;
 }
 
 .stats {

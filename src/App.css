@@ -3,13 +3,19 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
 }
 
 .content {
   flex: 1;
   display: flex;
   flex-direction: column;
-  overflow-y: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .tab-bar {
@@ -17,6 +23,9 @@
   justify-content: space-around;
   background-color: #f0f0f0;
   padding: 10px 0;
+  position: sticky;
+  bottom: 0;
+  z-index: 1000;
 }
 
 .tab-bar button {
@@ -71,4 +80,16 @@ button {
   to {
     transform: rotate(360deg);
   }
+}
+
+.tab-content {
+  flex: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+.content-wrapper {
+  min-height: 100%;
 }

@@ -1,3 +1,4 @@
+import './App.css';
 import './HomeView.css';
 import React, { useState, useEffect } from 'react';
 import { swipeBehavior, miniApp, mainButton, themeParams } from '@telegram-apps/sdk';
@@ -6,8 +7,8 @@ import { swipeBehavior, miniApp, mainButton, themeParams } from '@telegram-apps/
 // Declare these variables outside of the component, but within the module
 let isPurpleHeader = false;
 let isMainButtonEnabled = false;
-let count = 0;
-let isVerticalEnabled = true;
+let count = 1;
+let isVerticalEnabled = false;
 let swipeSupported = false;
 let swipeMounted = false;
 
@@ -32,7 +33,7 @@ const HomeView = ({ user, onOpenGameView, onOpenThreeJsView }) => {
 
     const onClick_MainButton = () => {
         console.log('Main button clicked');
-        setCurrentCount(prevCount => prevCount + 1);
+        setCurrentCount(prev => prev + 1);
     };
 
     useEffect(() => {
@@ -50,20 +51,18 @@ const HomeView = ({ user, onOpenGameView, onOpenThreeJsView }) => {
 
     const disableVerticalSwipe = () => {
         // swipeBehavior.mount();
-        swipeMounted = swipeBehavior.isMounted();
-        swipeBehavior.mount();
+        console.log(`Swipe isMounted: ${swipeBehavior.isMounted()}`);
+        swipeBehavior.mount();        
+        setSwipeIsMounted(swipeBehavior.isMounted());
+        console.log(`After calling mount(), Swipe isMounted: ${swipeBehavior.isMounted()}`);
 
-        setVerticalEnabled(swipeBehavior.isVerticalEnabled());
+        // setVerticalEnabled(swipeBehavior.isVerticalEnabled());
         console.log(`isVerticalEnabled: ${isVerticalEnabled}`);
 
         swipeBehavior.disableVertical();
-        console.log(`Disable vertical swipe`);
-
         setVerticalEnabled(swipeBehavior.isVerticalEnabled());
-        console.log(`isVerticalEnabled: ${isVerticalEnabled}`);
+        console.log(`After calling disableVertical(), isVerticalEnabled: ${isVerticalEnabled}`);
     };
-
-    
 
     const toggleMainButton = () => {
         enableMainButton(!isMainButtonEnabled);
