@@ -86,7 +86,7 @@ const HomeView = ({ user, onOpenGameView, onOpenThreeJsView }) => {
                 isEnabled: true,
                 isLoaderVisible: false,
                 isVisible: true,
-                text: 'Addition',
+                text: 'FSL Sign In',
                 textColor: '#668899'
             });
 

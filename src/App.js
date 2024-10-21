@@ -71,7 +71,8 @@ function App() {
           onOpenThreeJsView={() => setActiveTab('threejs')} 
         />;
       case 'tasks':
-        return <TasksView user={user} />;
+        // return <TasksView user={user} />;
+        return <ThreeJsView onBack={() => setActiveTab('home')} />
       case 'frens':
         return <InviteFriends user={user} />;
       case 'market':
