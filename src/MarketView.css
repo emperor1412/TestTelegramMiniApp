@@ -1,0 +1,27 @@
+.control-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+  }
+  
+  .control-buttons button {
+    width: 60px;
+    height: 60px;
+    margin: 5px;
+    font-size: 18px;
+    border: none;
+    border-radius: 50%;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .control-buttons button:active {
+    background-color: #0056b3;
+  }
+  
+  .control-buttons > div {
+    display: flex;
+    justify-content: center;
+  }
