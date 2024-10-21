@@ -212,9 +212,9 @@ const HomeView = ({ user, onOpenGameView, onOpenThreeJsView }) => {
                 <button onClick={onOpenGameView} className="open-game-button">
                     Open Unity WebGL View
                 </button>
-                <button onClick={onOpenThreeJsView} className="open-game-button">
+                {/* <button onClick={onOpenThreeJsView} className="open-game-button">
                     Open Three.js View
-                </button>
+                </button> */}
                 <button onClick={openMiniGame1} className="open-game-button">
                     Open Mini Game 1
                 </button>

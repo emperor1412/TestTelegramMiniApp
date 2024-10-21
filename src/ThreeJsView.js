@@ -111,9 +111,9 @@ function ThreeJsView({ onBack }) {
   }, []);
 
   return (
-    <div style={{ position: 'relative', width: '100vw', height: '100vh' }}>
+    <div style={{ position: 'relative', width: '100%', height: '100%', overflow: 'hidden' }}>
       <div ref={containerRef} style={{ width: '100%', height: '100%' }} />
-      <button
+      {/* <button
         onClick={onBack}
         style={{
           position: 'absolute',
@@ -129,7 +129,7 @@ function ThreeJsView({ onBack }) {
         }}
       >
         Back to Menu
-      </button>
+      </button> */}
     </div>
   );
 }

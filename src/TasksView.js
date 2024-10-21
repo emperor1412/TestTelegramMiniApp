@@ -1,13 +1,11 @@
 import React from 'react';
 import './App.css';
+import ThreeJsView from './ThreeJsView';
 
-const TasksView = ({ user }) => {
+const TasksView = ({ user, onBack }) => {
   return (
-    <div className="tab-content">
-      <div className="content-wrapper">
-      <h2>Tasks</h2>
-      {/* Add task list or other task-related content */}
-      </div>
+    <div className="tab-content" style={{ width: '100vw', height: '100vh', overflow: 'hidden' }}>
+      <ThreeJsView onBack={onBack} />
     </div>
   );
 };
