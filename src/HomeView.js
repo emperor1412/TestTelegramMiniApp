@@ -1,7 +1,7 @@
 import './App.css';
 import './HomeView.css';
 import React, { useState, useEffect } from 'react';
-import { swipeBehavior, miniApp, mainButton, themeParams, openTelegramLink, shareURL } from '@telegram-apps/sdk';
+import { swipeBehavior, miniApp, mainButton, themeParams, openTelegramLink, shareURL, openLink } from '@telegram-apps/sdk';
 // import WebApp from '@twa-dev/sdk'
 
 // Declare these variables outside of the component, but within the module
@@ -120,11 +120,19 @@ const HomeView = ({ user, onOpenGameView, onOpenThreeJsView }) => {
         shareURL('https://t.me/TestFSL_bot/fslminigame1');
     }
 
+    const openCustomLink = () => {
+        // Replace 'botusername' and 'appname' with the actual bot username and app name
+        openLink ('https://google.com', {
+            tryBrowser: 'chrome',
+            tryInstantView: true,
+          });
+    }
+
 
     return (
         <div className="home-view">
             <div className="content-wrapper">
-                <h2>Welcome, {user ? user.first_name : 'Guest'}!</h2>
+                <h2>Welcome, {user ? user.firstName : 'Guest'}!</h2>
                 <div className="stats">
                     <span className="lightning">⚡3</span>
                     <span className="ticket">🎟️3</span>
@@ -136,9 +144,10 @@ const HomeView = ({ user, onOpenGameView, onOpenThreeJsView }) => {
                     {user ? (
                         <ul>
                             <li><strong>User ID:</strong> {user.id}</li>
-                            <li><strong>First Name:</strong> {user.first_name}</li>
-                            <li><strong>Last Name:</strong> {user.last_name}</li>
+                            <li><strong>First Name:</strong> {user.firstName}</li>
+                            <li><strong>Last Name:</strong> {user.lastName}</li>
                             <li><strong>Username:</strong> {user.username}</li>
+                            <li><strong>isPremium:</strong> {user.isPremium}</li>
                         </ul>
                     ) : (
                         <p>No user information available.</p>
@@ -184,6 +193,9 @@ const HomeView = ({ user, onOpenGameView, onOpenThreeJsView }) => {
                 </button>
                 <button onClick={shareMiniGame1} className="open-game-button">
                     Share Mini Game 1
+                </button>
+                <button onClick={openCustomLink} className="open-game-button">
+                    Open Link
                 </button>
 
             </div>

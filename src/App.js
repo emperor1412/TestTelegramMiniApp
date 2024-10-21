@@ -10,7 +10,7 @@ import MarketView from './MarketView';
 import eruda from 'eruda'
 
 // import WebApp from '@twa-dev/sdk'
-import { init, initData, miniApp, viewport, swipeBehavior } from '@telegram-apps/sdk';
+import { init, initData, miniApp, viewport, swipeBehavior, closingBehavior } from '@telegram-apps/sdk';
 
 eruda.init()
 
@@ -32,6 +32,8 @@ function App() {
     miniApp.mount();
     viewport.expand();
 
+    closingBehavior.mount();
+    closingBehavior.enableConfirmation();
     // swipeBehavior.mount();
     // swipeBehavior.disableVertical();
 
@@ -53,7 +55,9 @@ function App() {
     // Get user info when the app loads
     // const user = tg.initDataUnsafe.user;
     // const temp = WebApp.initDataUnsafe.user;
-    const temp = initData.user;
+    initData.restore();
+    const temp = initData.user();
+    console.log('User:', temp);
 
     setUser(temp);
   }, []);
