@@ -100,6 +100,36 @@ function App() {
     }
   };
 
+  useEffect(() => {
+    const tabBar = document.querySelector('.tab-bar');
+    let startY;
+
+    const handleTouchStart = (e) => {
+      startY = e.touches[0].clientY;
+    };
+
+    const handleTouchMove = (e) => {
+      const currentY = e.touches[0].clientY;
+      const deltaY = currentY - startY;
+
+      if (Math.abs(deltaY) > 5) {
+        e.preventDefault();
+      }
+    };
+
+    if (tabBar) {
+      tabBar.addEventListener('touchstart', handleTouchStart, { passive: false });
+      tabBar.addEventListener('touchmove', handleTouchMove, { passive: false });
+    }
+
+    return () => {
+      if (tabBar) {
+        tabBar.removeEventListener('touchstart', handleTouchStart);
+        tabBar.removeEventListener('touchmove', handleTouchMove);
+      }
+    };
+  }, []);
+
   return (
     <div className="App">
       <div className="content">
