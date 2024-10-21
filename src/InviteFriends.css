@@ -197,6 +197,9 @@
   height: 100%;
   display: flex;
   flex-direction: column;
+  background-color: #f0f0f0;
+  color: #333;
+  font-family: Arial, sans-serif;
 }
 
 .invite-friends-content {
@@ -206,8 +209,111 @@
   overflow-y: auto;
 }
 
+.invite-friends-header {
+  background-color: #333;
+  color: white;
+  padding: 15px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.user-info {
+  background-color: #fff;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.username {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.stats {
+  display: flex;
+  gap: 15px;
+}
+
+.stats span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.fsl-id-button {
+  background-color: #0088cc;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.invite-message {
+  background-color: #8e44ad;
+  color: white;
+  padding: 15px;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
 .friends-list-container {
   flex: 1;
-  min-height: 200px;
   overflow-y: auto;
+}
+
+.friend-item {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  border-bottom: 1px solid #e0e0e0;
+  background-color: white;
+}
+
+.friend-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+
+.friend-info {
+  flex-grow: 1;
+}
+
+.friend-name {
+  font-weight: bold;
+  margin-bottom: 3px;
+}
+
+.friend-phone {
+  font-size: 12px;
+  color: #666;
+}
+
+.invite-checkbox {
+  width: 24px;
+  height: 24px;
+  border: 2px solid #8e44ad;
+  border-radius: 3px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 15px;
+}
+
+.invite-checkbox.selected {
+  background-color: #8e44ad;
+}
+
+.invite-checkbox.selected::after {
+  content: '✓';
+  color: white;
+  font-size: 16px;
 }
