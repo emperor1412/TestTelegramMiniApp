@@ -5,6 +5,7 @@ import './MarketView.css';
 const MarketView = ({ user }) => {
   const canvasRef = useRef(null);
   const [score, setScore] = useState(0);
+  const scoreRef = useRef(0);
   const gameRef = useRef({
     snake: [{x: 10, y: 10}],
     food: {x: 15, y: 15},
@@ -68,7 +69,8 @@ const MarketView = ({ user }) => {
       game.snake.unshift(head);
 
       if (head.x === game.food.x && head.y === game.food.y) {
-        setScore(prevScore => prevScore + 10);
+        scoreRef.current += 1;
+        setScore(scoreRef.current);
         generateFood();
       } else {
         game.snake.pop();
@@ -123,10 +125,11 @@ const MarketView = ({ user }) => {
       // Check collision with self
       for (let i = 1; i < game.snake.length; i++) {
         if (game.snake[i].x === game.snake[0].x && game.snake[i].y === game.snake[0].y) {
-          alert('Game Over! Score: ' + score);
+          alert('Game Over! Score: ' + scoreRef.current);
           game.snake = [{x: 10, y: 10}];
           game.dx = 1;
           game.dy = 0;
+          scoreRef.current = 0;
           setScore(0);
           break;
         }

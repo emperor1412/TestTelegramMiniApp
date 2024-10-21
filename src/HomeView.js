@@ -1,7 +1,7 @@
 import './App.css';
 import './HomeView.css';
 import React, { useState, useEffect } from 'react';
-import { swipeBehavior, miniApp, mainButton, themeParams, openTelegramLink, shareURL, openLink } from '@telegram-apps/sdk';
+import { swipeBehavior, miniApp, mainButton, themeParams, openTelegramLink, shareURL, openLink, secondaryButton } from '@telegram-apps/sdk';
 // import WebApp from '@twa-dev/sdk'
 
 // Declare these variables outside of the component, but within the module
@@ -36,8 +36,14 @@ const HomeView = ({ user, onOpenGameView, onOpenThreeJsView }) => {
         setCurrentCount(prev => prev + 1);
     };
 
+    const onClick_SecondaryButton = () => {
+        console.log('Secondary button clicked');
+        setCurrentCount(prev => prev - 1);
+    };
+
     useEffect(() => {
         mainButton.onClick(onClick_MainButton);
+        // secondaryButton.onClick(onClick_SecondaryButton);
         
         // Initialize state if needed
         setSwipeIsSupported(swipeBehavior.isSupported());
@@ -46,6 +52,7 @@ const HomeView = ({ user, onOpenGameView, onOpenThreeJsView }) => {
 
         return () => {
             mainButton.offClick(onClick_MainButton);
+            secondaryButton.offClick(onClick_SecondaryButton);
         };
     }, []);
 
@@ -79,9 +86,21 @@ const HomeView = ({ user, onOpenGameView, onOpenThreeJsView }) => {
                 isEnabled: true,
                 isLoaderVisible: false,
                 isVisible: true,
-                text: 'Click Me!',
+                text: 'Addition',
                 textColor: '#668899'
             });
+
+            // secondaryButton.mount();
+            // secondaryButton.setParams({
+            //     backgroundColor: '#112233',
+            //     hasShineEffect: true,
+            //     isEnabled: true,
+            //     isLoaderVisible: false,
+            //     isVisible: true,
+            //     text: 'Subtraction',
+            //     textColor: '#668899'
+            // });
+
         } else {
 
             if (mainButton.isMounted) {
@@ -92,6 +111,16 @@ const HomeView = ({ user, onOpenGameView, onOpenThreeJsView }) => {
                 });
             }
             mainButton.unmount();
+
+            // if (secondaryButton.isMounted) {
+            //     secondaryButton.setParams({
+            //         isLoaderVisible: false,
+            //         isEnabled: false,
+            //         isVisible: false
+            //     });
+            // }
+            // secondaryButton.unmount();
+
             themeParams.unmount();
         }
     };
@@ -171,9 +200,9 @@ const HomeView = ({ user, onOpenGameView, onOpenThreeJsView }) => {
                     <button onClick={toggleMainButton} className="toggle-main-button">
                         {mainButtonEnabled ? 'Disable Main Button' : 'Enable Main Button'}
                     </button>
-                    <button onClick={onClick_MainButton} className="main-button">
+                    {/* <button onClick={onClick_MainButton} className="main-button">
                         Test Main Button
-                    </button>
+                    </button> */}
                 </div>
 
                 <button onClick={toggleHeaderColor} className="toggle-header-color-button">
