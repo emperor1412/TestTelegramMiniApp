@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { hapticFeedback } from '@telegram-apps/sdk';
 import './App.css';
 import './MarketView.css';
 
@@ -13,7 +14,7 @@ const MarketView = ({ user }) => {
     dy: 0,
     newDirection: null,
     moveCounter: 0,
-    moveInterval: 6  // Snake moves every 4 frames
+    moveInterval: 8  // Snake moves every 4 frames
   });
 
   useEffect(() => {
@@ -148,6 +149,7 @@ const MarketView = ({ user }) => {
   }, []);
 
   const handleDirection = (dx, dy) => {
+    hapticFeedback.impactOccurred('rigid');
     const game = gameRef.current;
     if ((dx !== 0 && game.dy !== 0) || (dy !== 0 && game.dx !== 0)) {
       game.newDirection = { dx, dy };
