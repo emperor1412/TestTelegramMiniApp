@@ -161,15 +161,18 @@ const MarketView = ({ user }) => {
       <div className="content-wrapper">
         <h2>Market</h2>
         <canvas ref={canvasRef} width="200" height="200" style={{border: '1px solid black'}}></canvas>
-        {/* <p>Use arrow keys or buttons to control the snake</p> */}
         <p>Score: {score}</p>
         <div className="control-buttons">
-          <button onClick={() => handleDirection(0, -1)}>Up</button>
+          <div className="vertical-buttons">
+            <button onClick={() => handleDirection(0, -1)}>Up</button>
+          </div>
           <div className="horizontal-buttons">
             <button onClick={() => handleDirection(-1, 0)}>Left</button>
             <button onClick={() => handleDirection(1, 0)}>Right</button>
           </div>
-          <button onClick={() => handleDirection(0, 1)}>Down</button>
+          <div className="vertical-buttons">
+            <button onClick={() => handleDirection(0, 1)}>Down</button>
+            </div>
         </div>
       </div>
     </div>
