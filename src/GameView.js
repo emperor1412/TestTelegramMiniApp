@@ -20,17 +20,7 @@ function GameView({ onBack }) {
           companyName: "DefaultCompany",
           productName: "TestUnity6WebGL",
           productVersion: "1.0.2"
-        };
-          
-        // Try to load Brotli compressed files if supported
-        //   let supportsBrotli = 'DecompressionStream' in window;
-        //   supportsBrotli = false; // Disable Brotli for now
-        // console.log('supportsBrotli', supportsBrotli);
-        //   if (supportsBrotli) {
-        //     config.dataUrl += '.br';
-        //     config.frameworkUrl += '.br';
-        //     config.codeUrl += '.br';
-        //   }
+        };      
 
         const canvas = canvasRef.current;
         const loadingBar = document.querySelector("#unity-loading-bar");
@@ -75,7 +65,7 @@ function GameView({ onBack }) {
       <div id="unity-container" style={{ width: '100%', height: '100%' }}>
         <canvas ref={canvasRef} id="unity-canvas" style={{ width: '100%', height: '100%' }}></canvas>
         <div id="unity-loading-bar">
-          <div id="unity-logo"></div>
+          {/* <div id="unity-logo"></div> */}
           <div id="unity-progress-bar-empty">
             <div id="unity-progress-bar-full"></div>
           </div>

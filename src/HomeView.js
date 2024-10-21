@@ -1,7 +1,7 @@
 import './App.css';
 import './HomeView.css';
 import React, { useState, useEffect } from 'react';
-import { swipeBehavior, miniApp, mainButton, themeParams } from '@telegram-apps/sdk';
+import { swipeBehavior, miniApp, mainButton, themeParams, openTelegramLink, shareURL } from '@telegram-apps/sdk';
 // import WebApp from '@twa-dev/sdk'
 
 // Declare these variables outside of the component, but within the module
@@ -110,6 +110,16 @@ const HomeView = ({ user, onOpenGameView, onOpenThreeJsView }) => {
         // }
     };
 
+    const openMiniGame1 = () => {
+        // Replace 'botusername' and 'appname' with the actual bot username and app name
+        openTelegramLink('https://t.me/TestFSL_bot/fslminigame1');
+    };
+
+    const shareMiniGame1 = () => {
+        // Replace 'botusername' and 'appname' with the actual bot username and app name
+        shareURL('https://t.me/TestFSL_bot/fslminigame1');
+    }
+
 
     return (
         <div className="home-view">
@@ -169,6 +179,13 @@ const HomeView = ({ user, onOpenGameView, onOpenThreeJsView }) => {
                 <button onClick={onOpenThreeJsView} className="open-game-button">
                     Open Three.js View
                 </button>
+                <button onClick={openMiniGame1} className="open-game-button">
+                    Open Mini Game 1
+                </button>
+                <button onClick={shareMiniGame1} className="open-game-button">
+                    Share Mini Game 1
+                </button>
+
             </div>
         </div>
     );
