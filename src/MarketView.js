@@ -159,9 +159,9 @@ const MarketView = ({ user }) => {
   return (
     <div className="tab-content">
       <div className="content-wrapper">
-        <h2>Market</h2>
+        <h2 style={{ marginTop: '0px', marginBottom: '0px' }}>Market</h2>
         <canvas ref={canvasRef} width="200" height="200" style={{border: '1px solid black'}}></canvas>
-        <p>Score: {score}</p>
+        <p style={{ marginTop: '0px', marginBottom: '0px' }}>Score: {score}</p>
         <div className="control-buttons">
           <div className="vertical-buttons">
             <button onClick={() => handleDirection(0, -1)}>Up</button>

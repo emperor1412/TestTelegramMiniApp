@@ -209,9 +209,9 @@ const HomeView = ({ user, onOpenGameView, onOpenThreeJsView }) => {
                     {purpleHeader ? 'Set Default Header Color' : 'Set Purple Header Color'}
                 </button>
 
-                <button onClick={onOpenGameView} className="open-game-button">
+                {/* <button onClick={onOpenGameView} className="open-game-button">
                     Open Unity WebGL View
-                </button>
+                </button> */}
                 {/* <button onClick={onOpenThreeJsView} className="open-game-button">
                     Open Three.js View
                 </button> */}
