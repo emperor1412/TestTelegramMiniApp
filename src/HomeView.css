@@ -2,7 +2,7 @@
     margin: 10px;
     padding: 10px 20px;
     font-size: 16px;
-    background-color: #8e44ad;
+    background-color: #9c27b0;
     color: white;
     border: none;
     border-radius: 5px;
@@ -10,31 +10,126 @@
 }
 
 .toggle-header-color-button:hover {
-    background-color: #732d91;
+    background-color: #7b1fa2;
 }
 
 .home-view {
-  flex: 1;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
+  font-family: 'Roboto', sans-serif;
+  color: #333;
   padding: 20px;
-  box-sizing: border-box;
+  background-color: #f5f5f5;
+  min-height: 100vh;
+}
+
+.content-wrapper {
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  font-size: 24px;
+  color: #0088cc;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
 .stats {
   display: flex;
   justify-content: space-around;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
+  background-color: #f0f0f0;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.stats span {
+  font-size: 18px;
+  font-weight: bold;
 }
 
 .user-info {
+  background-color: #e6f3ff;
+  padding: 15px;
+  border-radius: 8px;
   margin-bottom: 20px;
 }
 
+.user-info h3 {
+  color: #0088cc;
+  margin-bottom: 10px;
+}
+
+.user-info ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.user-info li {
+  margin-bottom: 5px;
+}
+
 .swipe-info {
+  background-color: #fff3e6;
+  padding: 15px;
+  border-radius: 8px;
   margin-bottom: 20px;
 }
 
 button {
+  background-color: #0088cc;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
   margin-bottom: 10px;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #006699;
+}
+
+.main-button-info {
+  background-color: #e6ffe6;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.disable-swipe-button {
+  background-color: #ff4d4d;
+}
+
+.disable-swipe-button:hover {
+  background-color: #cc0000;
+}
+
+.toggle-main-button {
+  background-color: #4caf50;
+}
+
+.toggle-main-button:hover {
+  background-color: #45a049;
+}
+
+.toggle-header-color-button {
+  background-color: #9c27b0;
+}
+
+.toggle-header-color-button:hover {
+  background-color: #7b1fa2;
+}
+
+.open-game-button {
+  background-color: #ff9800;
+}
+
+.open-game-button:hover {
+  background-color: #f57c00;
 }

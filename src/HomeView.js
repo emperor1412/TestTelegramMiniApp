@@ -134,9 +134,9 @@ const HomeView = ({ user, onOpenGameView, onOpenThreeJsView }) => {
             <div className="content-wrapper">
                 <h2>Welcome, {user ? user.firstName : 'Guest'}!</h2>
                 <div className="stats">
-                    <span className="lightning">⚡3</span>
-                    <span className="ticket">🎟️3</span>
-                    <span className="coins">🪙267</span>
+                    <span className="lightning">⚡ 3</span>
+                    <span className="ticket">🎟️ 3</span>
+                    <span className="coins">🪙 267</span>
                 </div>
 
                 <div className="user-info">
@@ -147,7 +147,7 @@ const HomeView = ({ user, onOpenGameView, onOpenThreeJsView }) => {
                             <li><strong>First Name:</strong> {user.firstName}</li>
                             <li><strong>Last Name:</strong> {user.lastName}</li>
                             <li><strong>Username:</strong> {user.username}</li>
-                            <li><strong>isPremium:</strong> {user.isPremium}</li>
+                            <li><strong>isPremium:</strong> {user.isPremium ? 'Yes' : 'No'}</li>
                         </ul>
                     ) : (
                         <p>No user information available.</p>
@@ -155,28 +155,26 @@ const HomeView = ({ user, onOpenGameView, onOpenThreeJsView }) => {
                 </div>
 
                 <div className="swipe-info">
+                    <h3>Swipe Information</h3>
                     <p>Swipe Supported: {swipeIsSupported ? 'Yes' : 'No'}</p>
                     <p>Swipe Mounted: {swipeIsMounted ? 'Yes' : 'No'}</p>
                     <p>Vertical Swipe Enabled: {verticalEnabled ? 'Yes' : 'No'}</p>
+                    <button onClick={disableVerticalSwipe} className="disable-swipe-button">
+                        Disable Vertical Swipe
+                    </button>
                 </div>
-
-                <button onClick={disableVerticalSwipe} className="disable-swipe-button">
-                    Disable Vertical Swipe
-                </button>
 
                 <div className="main-button-info">
                     <h3>Main Button Information</h3>
                     <p>Count: {currentCount}</p>
                     <p>Main Button Enabled: {mainButtonEnabled ? 'Yes' : 'No'}</p>
+                    <button onClick={toggleMainButton} className="toggle-main-button">
+                        {mainButtonEnabled ? 'Disable Main Button' : 'Enable Main Button'}
+                    </button>
+                    <button onClick={onClick_MainButton} className="main-button">
+                        Test Main Button
+                    </button>
                 </div>
-
-                <button onClick={toggleMainButton} className="toggle-main-button">
-                    {mainButtonEnabled ? 'Disable Main Button' : 'Enable Main Button'}
-                </button>
-
-                <button onClick={onClick_MainButton} className="main-button">
-                    Test Main Button
-                </button>
 
                 <button onClick={toggleHeaderColor} className="toggle-header-color-button">
                     {purpleHeader ? 'Set Default Header Color' : 'Set Purple Header Color'}
@@ -197,7 +195,6 @@ const HomeView = ({ user, onOpenGameView, onOpenThreeJsView }) => {
                 <button onClick={openCustomLink} className="open-game-button">
                     Open Link
                 </button>
-
             </div>
         </div>
     );
