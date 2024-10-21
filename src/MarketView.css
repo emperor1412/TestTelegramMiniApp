@@ -15,6 +15,10 @@
     background-color: #007bff;
     color: white;
     cursor: pointer;
+    display: flex;           /* Add this */
+    justify-content: center; /* Add this */
+    align-items: center;     /* Add this */
+    padding: 0;              /* Add this */
   }
   
   .control-buttons button:active {

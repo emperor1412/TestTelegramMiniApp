@@ -12,7 +12,7 @@ const MarketView = ({ user }) => {
     dy: 0,
     newDirection: null,
     moveCounter: 0,
-    moveInterval: 4  // Snake moves every 4 frames
+    moveInterval: 6  // Snake moves every 4 frames
   });
 
   useEffect(() => {
@@ -82,6 +82,37 @@ const MarketView = ({ user }) => {
       };
     }
     
+    function handleKeyPress(event) {
+      const key = event.key;
+      const game = gameRef.current;
+
+      switch (key) {
+        case 'W':
+        case 'w':
+        case 'ArrowUp':
+          if (game.dy === 0) game.newDirection = { dx: 0, dy: -1 };
+          break;
+        case 'S':
+        case 's':
+        case 'ArrowDown':
+          if (game.dy === 0) game.newDirection = { dx: 0, dy: 1 };
+          break;
+        case 'A':
+        case 'a':
+        case 'ArrowLeft':
+          if (game.dx === 0) game.newDirection = { dx: -1, dy: 0 };
+          break;
+        case 'D':
+        case 'd':
+        case 'ArrowRight':
+          if (game.dx === 0) game.newDirection = { dx: 1, dy: 0 };
+          break;
+      }
+    }
+
+    // Add event listener for keyboard controls
+    window.addEventListener('keydown', handleKeyPress);
+
     function gameLoop() {
       const game = gameRef.current;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -108,6 +139,7 @@ const MarketView = ({ user }) => {
 
     // Cleanup function
     return () => {
+      window.removeEventListener('keydown', handleKeyPress);
       // Any cleanup if needed
     };
   }, []);
@@ -128,7 +160,7 @@ const MarketView = ({ user }) => {
         <p>Score: {score}</p>
         <div className="control-buttons">
           <button onClick={() => handleDirection(0, -1)}>Up</button>
-          <div>
+          <div className="horizontal-buttons">
             <button onClick={() => handleDirection(-1, 0)}>Left</button>
             <button onClick={() => handleDirection(1, 0)}>Right</button>
           </div>
