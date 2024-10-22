@@ -144,9 +144,9 @@ const HomeView = ({ user, onOpenGameView, onOpenThreeJsView }) => {
         openTelegramLink('https://t.me/TestFSL_bot/fslminigame1');
     };
 
-    const shareMiniGame1 = () => {
+    const shareMiniGame = link => {
         // Replace 'botusername' and 'appname' with the actual bot username and app name
-        shareURL('https://t.me/TestFSL_bot/fslminigame1');
+        shareURL(link);
     }
 
     const openCustomLink = () => {
@@ -155,8 +155,11 @@ const HomeView = ({ user, onOpenGameView, onOpenThreeJsView }) => {
             tryBrowser: 'chrome',
             tryInstantView: true,
           });
-    }
+    }    
 
+    const openGameLink = link => {
+        openTelegramLink(link);
+    }
 
     return (
         <div className="home-view">
@@ -215,14 +218,42 @@ const HomeView = ({ user, onOpenGameView, onOpenThreeJsView }) => {
                 {/* <button onClick={onOpenThreeJsView} className="open-game-button">
                     Open Three.js View
                 </button> */}
-                <button onClick={openMiniGame1} className="open-game-button">
+                {/* <button onClick={openMiniGame1} className="open-game-button">
                     Open Mini Game 1
-                </button>
-                <button onClick={shareMiniGame1} className="open-game-button">
-                    Share Mini Game 1
-                </button>
+                </button> */}
                 <button onClick={openCustomLink} className="open-game-button">
                     Open Link
+                </button>
+                {/* https://emperor1412.github.io/CandyCrush/ */}
+                <button onClick={() => openGameLink("https://t.me/TestFSL_bot/candycrush")} className="open-game-button">
+                    Play Candy Crush
+                </button>
+                <button onClick={() => shareMiniGame('https://t.me/TestFSL_bot/candycrush')} className="open-game-button">
+                    Share Candy Crush game
+                </button>
+                {/* https://emperor1412.github.io/ScrewPuzzle/ */}
+                <button onClick={() => openGameLink("https://t.me/TestFSL_bot/screwpuzzle")} className="open-game-button">
+                    Play Screw Puzzle
+                </button>
+                {/* https://emperor1412.github.io/SnakeGame/ */}
+                <button onClick={() => openGameLink("https://t.me/TestFSL_bot/snakegame")} className="open-game-button">
+                    Play Snake Game
+                </button>
+                {/* https://emperor1412.github.io/TileMatch/ */}
+                <button onClick={() => openGameLink("https://t.me/TestFSL_bot/tilematch")} className="open-game-button">
+                    Play Tile Match
+                </button>
+                {/* https://emperor1412.github.io/IdleWaterParkTycoon/ */}
+                <button onClick={() => openGameLink("https://t.me/TestFSL_bot/idlewaterparktycoon")} className="open-game-button">
+                    Play Idle Water Park Tycoon
+                </button>
+                {/* https://emperor1412.github.io/IdleFarmEmpire/ */}
+                <button onClick={() => openGameLink("https://t.me/TestFSL_bot/idlefarmempire")} className="open-game-button">
+                    Play Idle Farm Empire
+                </button>
+                {/* https://emperor1412.github.io/MegaSoccer2D/ */}
+                <button onClick={() => openGameLink("https://t.me/TestFSL_bot/megasoccer2d")} className="open-game-button">
+                    Play Mega Soccer 2D
                 </button>
             </div>
         </div>
