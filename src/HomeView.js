@@ -162,7 +162,7 @@ const HomeView = ({ user, onOpenGameView, onOpenThreeJsView }) => {
     }
 
     return (
-        <div className="home-view">
+        // <div className="home-view">
             <div className="content-wrapper">
                 <h2>Welcome, {user ? user.firstName : 'Guest'}!</h2>
                 <div className="stats">
@@ -208,73 +208,61 @@ const HomeView = ({ user, onOpenGameView, onOpenThreeJsView }) => {
                     </button> */}
                 </div>
 
-                <button onClick={toggleHeaderColor} className="toggle-header-color-button">
-                    {purpleHeader ? 'Set Default Header Color' : 'Set Purple Header Color'}
-                </button>
+                <div className="game-controls-section">
+                    <h3>Game Controls</h3>
+                    <button onClick={toggleHeaderColor} className="toggle-header-color-button">
+                        {purpleHeader ? 'Set Default Header Color' : 'Set Purple Header Color'}
+                    </button>
 
-                {/* <button onClick={onOpenGameView} className="open-game-button">
-                    Open Unity WebGL View
-                </button> */}
-                {/* <button onClick={onOpenThreeJsView} className="open-game-button">
-                    Open Three.js View
-                </button> */}
-                {/* <button onClick={openMiniGame1} className="open-game-button">
-                    Open Mini Game 1
-                </button> */}
-                <button onClick={openCustomLink} className="open-game-button">
-                    Open Link
-                </button>
-                {/* https://emperor1412.github.io/bullrush/ */}
-                <button onClick={() => openGameLink("https://t.me/TestFSL_bot/bullrush")} className="open-game-button">
-                    Play Bull Rush
-                </button>
-                <button onClick={() => shareMiniGame('https://t.me/TestFSL_bot/bullrush')} className="open-game-button">
-                    Share Bull Rush
-                </button>
-                {/* https://emperor1412.github.io/flappycube/ */}
-                <button onClick={() => openGameLink("https://t.me/TestFSL_bot/flappycube")} className="open-game-button">
-                    Play Flappy Cube
-                </button>
+                    <button onClick={openCustomLink} className="open-game-button">
+                        Open Link
+                    </button>
 
-                
-                {/* https://emperor1412.github.io/CandyCrush/ */}
-                <button onClick={() => openGameLink("https://t.me/TestFSL_bot/candycrush")} className="open-game-button">
-                    Play Candy Crush
-                </button>
-                {/* https://emperor1412.github.io/ScrewPuzzle/ */}
-                <button onClick={() => openGameLink("https://t.me/TestFSL_bot/screwpuzzle")} className="open-game-button">
-                    Play Screw Puzzle
-                </button>
+                    <button onClick={() => openGameLink("https://t.me/TestFSL_bot/bullrush")} className="open-game-button">
+                        Play Bull Rush
+                    </button>
+                    <button onClick={() => shareMiniGame('https://t.me/TestFSL_bot/bullrush')} className="open-game-button">
+                        Share Bull Rush
+                    </button>
 
+                    <button onClick={() => openGameLink("https://t.me/TestFSL_bot/flappycube")} className="open-game-button">
+                        Play Flappy Cube
+                    </button>
 
-                {/* https://emperor1412.github.io/TileMatch/ */}
-                <button onClick={() => openGameLink("https://t.me/TestFSL_bot/tilematch")} className="open-game-button">
-                    Play Tile Match
-                </button>
-                {/* https://emperor1412.github.io/IdleFarmEmpire/ */}
-                <button onClick={() => openGameLink("https://t.me/TestFSL_bot/idlefarmempire")} className="open-game-button">
-                    Play Idle Farm Empire
-                </button>
+                    <button onClick={() => openGameLink("https://t.me/TestFSL_bot/candycrush")} className="open-game-button">
+                        Play Candy Crush
+                    </button>
 
-                {/* https://emperor1412.github.io/SnakeGame/ */}
-                <button onClick={() => openGameLink("https://t.me/TestFSL_bot/snakegame")} className="open-game-button">
-                    Play Snake Game
-                </button>
-                {/* https://emperor1412.github.io/IdleWaterParkTycoon/ */}
-                <button onClick={() => openGameLink("https://t.me/TestFSL_bot/idlewaterparktycoon")} className="open-game-button">
-                    Play Idle Water Park Tycoon
-                </button>
-                {/* https://emperor1412.github.io/IdleMechanicManager/ */}
-                <button onClick={() => openGameLink("https://t.me/TestFSL_bot/idlemechanicmanager")} className="open-game-button">
-                    Play Idle Mechanic Manager
-                </button>
-                {/* https://emperor1412.github.io/MegaSoccer2D/ */}
-                <button onClick={() => openGameLink("https://t.me/TestFSL_bot/megasoccer2d")} className="open-game-button">
-                    Play Mega Soccer 2D
-                </button>
-               
+                    <button onClick={() => openGameLink("https://t.me/TestFSL_bot/screwpuzzle")} className="open-game-button">
+                        Play Screw Puzzle
+                    </button>
+
+                    <button onClick={() => openGameLink("https://t.me/TestFSL_bot/tilematch")} className="open-game-button">
+                        Play Tile Match
+                    </button>
+
+                    <button onClick={() => openGameLink("https://t.me/TestFSL_bot/idlefarmempire")} className="open-game-button">
+                        Play Idle Farm Empire
+                    </button>
+
+                    <button onClick={() => openGameLink("https://t.me/TestFSL_bot/snakegame")} className="open-game-button">
+                        Play Snake Game
+                    </button>
+
+                    <button onClick={() => openGameLink("https://t.me/TestFSL_bot/idlewaterparktycoon")} className="open-game-button">
+                        Play Idle Water Park Tycoon
+                    </button>
+
+                    <button onClick={() => openGameLink("https://t.me/TestFSL_bot/idlemechanicmanager")} className="open-game-button">
+                        Play Idle Mechanic Manager
+                    </button>
+
+                    <button onClick={() => openGameLink("https://t.me/TestFSL_bot/megasoccer2d")} className="open-game-button">
+                        Play Mega Soccer 2D
+                    </button>
+                </div>
             </div>
-        </div>
+        // </div>
     );
 };
 

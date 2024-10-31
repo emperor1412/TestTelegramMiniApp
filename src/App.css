@@ -16,6 +16,8 @@
   flex-direction: column;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
+  background-color: rgb(61, 61, 61);
+
 }
 
 .tab-bar {
