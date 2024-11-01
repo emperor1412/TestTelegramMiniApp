@@ -7,6 +7,7 @@ import FSLIDView from './FSLIDView';
 import HomeView from './HomeView';
 import TasksView from './TasksView';
 import MarketView from './MarketView';
+import Ticket2 from './Ticket2';
 import eruda from 'eruda'
 
 // import WebApp from '@twa-dev/sdk'
@@ -78,7 +79,7 @@ function App() {
       case 'market':
         return <MarketView user={user} />;
       case 'fslid':
-        return <FSLIDView user={user} />;
+        return <FSLIDView user={user} setActiveTab={setActiveTab} />;
       case 'game':
         return (
           <div style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', zIndex: 1000 }}>
@@ -91,6 +92,8 @@ function App() {
             <ThreeJsView onBack={() => setActiveTab('home')} />
           </div>
         );
+      case 'ticket2':
+        return <Ticket2 onBack={() => setActiveTab('fslid')} />;
       default:
         return <HomeView 
           user={user} 

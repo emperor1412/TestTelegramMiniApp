@@ -2,7 +2,7 @@ import React from 'react';
 import './FSLIDView.css';
 import './App.css';
 
-const FSLIDView = ({ user }) => {
+const FSLIDView = ({ user, setActiveTab }) => {
   const handleGameClick = () => {
     console.log('Game clicked');
     // Add game click handler
@@ -10,7 +10,7 @@ const FSLIDView = ({ user }) => {
 
   const handleTicketClick = () => {
     console.log('Ticket clicked');
-    // Add ticket click handler
+    setActiveTab('ticket2');
   };
 
   const handleRaffleClick = () => {
