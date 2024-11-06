@@ -1,7 +1,7 @@
 import './App.css';
 import './HomeView.css';
 import React, { useState, useEffect } from 'react';
-import { swipeBehavior, miniApp, mainButton, themeParams, openTelegramLink, shareURL, openLink, secondaryButton } from '@telegram-apps/sdk';
+import { swipeBehavior, miniApp, mainButton, themeParams, openTelegramLink, shareURL, openLink, secondaryButton, shareStory } from '@telegram-apps/sdk';
 // import WebApp from '@twa-dev/sdk'
 
 // Declare these variables outside of the component, but within the module
@@ -161,6 +161,12 @@ const HomeView = ({ user, onOpenGameView, onOpenThreeJsView }) => {
         openTelegramLink(link);
     }
 
+    const shareTheStory = () => {
+        if (shareStory.isSupported()) {
+            shareStory('https://firebasestorage.googleapis.com/v0/b/text2image-118de.appspot.com/o/Test%2FFSL.png?alt=media&token=1c0da5c9-e748-4916-96b5-d28ff99e7a6a');
+        }
+    }
+
     return (
         // <div className="home-view">
             <div className="content-wrapper">
@@ -223,6 +229,9 @@ const HomeView = ({ user, onOpenGameView, onOpenThreeJsView }) => {
                     </button>
                     <button onClick={() => shareMiniGame('https://t.me/TestFSL_bot/bullrush')} className="open-game-button">
                         Share Bull Rush
+                    </button>
+                    <button onClick={() => shareTheStory()} className="open-game-button">
+                        Share Story
                     </button>
 
                     <button onClick={() => openGameLink("https://t.me/TestFSL_bot/flappycube")} className="open-game-button">
