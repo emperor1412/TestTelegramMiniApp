@@ -15,8 +15,6 @@ const Ticket2 = ({ onBack }) => {
 
   return (
     <div className="tab-content">
-      <div className="content-wrapper ticket-wrapper">
-        {/* Header Section */}
         <div className="ticket-header">
           <button 
             onClick={handleBack}
@@ -29,6 +27,10 @@ const Ticket2 = ({ onBack }) => {
             <span className="header-text">TICKETS</span>
           </div>
         </div>
+        
+      <div className="content-wrapper ticket-wrapper">
+        {/* Header Section */}
+        
 
         {/* Ticket Count Section */}
         <div className="ticket-count-section">
