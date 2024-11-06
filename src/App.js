@@ -11,13 +11,16 @@ import Ticket2 from './Ticket2';
 import eruda from 'eruda'
 
 // import WebApp from '@twa-dev/sdk'
-import { init, initData, miniApp, viewport, swipeBehavior, closingBehavior } from '@telegram-apps/sdk';
+import { init, initData, miniApp, viewport, swipeBehavior, closingBehavior, retrieveLaunchParams } from '@telegram-apps/sdk';
+
 
 eruda.init()
 
 // const tg = window.Telegram.WebApp;
 
 function App() {
+  const { initDataRaw } = retrieveLaunchParams();
+  console.log(initDataRaw);
 
   const [user, setUser] = useState(null);
   const [activeTab, setActiveTab] = useState('home');
